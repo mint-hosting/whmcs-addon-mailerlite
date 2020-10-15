@@ -1,0 +1,87 @@
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+name: Testing
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: "mysqlpass"
+          MYSQL_USER: "whmcs"
+          MYSQL_PASSWORD: "somepass"
+          MYSQL_DATABASE: "whmcs_test"
+        ports:
+          - 3306:3306
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/mysql
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v1
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install Composer Dependencies
+        run: |
+          composer install -n --ignore-platform-reqs
+
+      - name: Run PHPUnit tests
+        run: |
+          vendor/bin/phpunit -d memory_limit=1024M --testdox
+        env:
+          APP_ENV: testing
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install required NodeJS dependencies
+        run: |
+          npm i -g semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git @semantic-release/release-notes-generator
+
+      - name: Run release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ github.repository_owner }}
+          GIT_AUTHOR_EMAIL: ${{ github.actor }}
+          GIT_COMMITTER_NAME: ${{ github.repository_owner }}
+          GIT_COMMITTER_EMAIL: ${{ github.actor }}
+        run: |
+          chmod +x .release/release.sh && cd .release && /bin/bash release.sh
