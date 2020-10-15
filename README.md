@@ -1,47 +1,33 @@
-# WHMCS Sample Addon Module #
+# MailerLite WHMCS Addon Modules #
 
-## Summary ##
+## Intoduction
+The MailewrLite integration leverages MailerLite's API to synchronize customer, order and abandoned cart data with your MailerLite account. 
+This allows you to take full advantage of MailerLite's advanced e-commerce automations to setup manual and automated campaigns including:
+- Thank you's to new customers
+- Automated follow-up's on abandoned carts
+- To provide on-boarding/drip-feed campaigns to new customers
+- Attempt to win back lapsed customers who haven't bought anything recently
+- Reward your best customers based on order count or total spent
 
-An addon module allows you to add additional functionality to WHMCS. It
-can provide both client and admin facing user interfaces, as well as
-utilise hook functionality within WHMCS.
+## Initial Setup
 
-This sample file demonstrates how an addon module for WHMCS should be
-structured and exercises all supported functionality.
+1. Navigate to `Configuration () > System Settings > Addon Modules` or, prior to WHMCS 8.0, `Setup > Addon Modules`.
+2. Locate the "'MailerLite'" module and click `Activate`.
+3. Assign your admin user role group (typically Full Administrator), access to the addon.
+4. Navigate to `Addons > MailerLite` to access
+The first time you access the MailerLite addon you will be guided through a setup process that connects your WHMCS installation with your MailerLite account.
 
-For more information, please refer to the online documentation at
-https://developers.whmcs.com/addon-modules/
+## Development
+An addon module allows you to add additional functionality to WHMCS. It can provide both client and admin facing user interfaces, as well as utilise hook functionality within WHMCS.
 
-## Recommended Module Content ##
+For more information, please refer to the online documentation at https://developers.whmcs.com/addon-modules/
 
-The recommended structure of an addon module is as follows.
+## Tests
 
-```
- addonmodule/
-  |- lang/
-  |- lib/
-  |- templates/
-  |  addonmodule.php
-  |  hooks.php
-  |  logo.png
-```
+We strongly encourage you to write unit tests for your work. Within this SDK we provide a sample unit test based upon the widely used PHPUnit.
 
-## Minimum Requirements ##
-
-For the latest WHMCS minimum system requirements, please refer to
-http://docs.whmcs.com/System_Requirements
-
-We recommend your module follows the same minimum requirements wherever
-possible.
-
-## Tests ##
-
-We strongly encourage you to write unit tests for your work. Within this SDK we
-provide a sample unit test based upon the widely used PHPUnit.
-
-## Useful Resources
+## Resources
 * [Developer Portal](https://developers.whmcs.com/)
 * [Hook Documentation](https://developers.whmcs.com/hooks/)
 * [API Documentation](https://developers.whmcs.com/api/)
 
-[WHMCS Limited](https://www.whmcs.com)
