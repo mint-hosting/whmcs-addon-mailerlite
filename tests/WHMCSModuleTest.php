@@ -14,10 +14,13 @@
  * @copyright Copyright (c) WHMCS Limited 2017
  * @license http://www.whmcs.com/license/ WHMCS Eula
  */
-class WHMCSModuleTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+// class WHMCSModuleTest extends PHPUnit_Framework_TestCase
+class WHMCSModuleTest extends TestCase
 {
     /** @var string $moduleName */
-    protected $moduleName = 'addonmodule';
+    protected $moduleName = 'mailerlite';
 
     /**
      * Asserts the required config options function is defined.

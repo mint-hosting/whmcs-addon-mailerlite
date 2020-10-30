@@ -10,4 +10,14 @@
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <server name="DB_NAME" value="whmcs"/>
+        <server name="DB_HOST" value="whmcs_db"/>
+        <server name="DB_USER" value="root"/>
+        <server name="DB_PASSWORD" value="mysqlpass"/>
+        <server name="DB_DRIVER" value="mysql"/>
+        <server name="DB_CHARSET" value="UTF8"/>
+        <server name="DB_COLLATION" value="utf8_unicode_ci"/>
+        <server name="DB_CONNECTION" value="default"/>
+    </php>
 </phpunit>

@@ -1,16 +1,15 @@
 {
     "schema": "1.0",
     "type": "whmcs-addons",
-    "name": "sample-addon-module",
+    "name": "mailerlite",
     "license": "MIT",
     "category": "addon",
     "description": {
         "name": "Sample Addon Module",
-        "tagline": "An addon module allows you to add additional functionality to WHMCS.",
-        "long": "This sample file demonstrates how an addon module for WHMCS should be structured and exercises all supported functionality.",
+        "tagline": "Build customer mailing lists and leverage e-commerce marketing.",
+        "long": "Automate mailing list management using the MailerLite digitial email marketing solution.",
         "features": [
-            "Provide both client and admin facing user interfaces",
-            "Utilize hook functionality within WHMCS"
+            "Subscriber management automation"
         ]
     },
     "logo": {
@@ -25,8 +24,8 @@
     },
     "authors": [
         {
-            "name": "WHMCS",
-            "homepage": "https:\/\/www.whmcs.com\/"
+            "name": "Mint Hosting",
+            "homepage": "https:\/\/www.mint.rs\/"
         }
     ]
 }
