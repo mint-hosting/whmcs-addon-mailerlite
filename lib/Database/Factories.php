@@ -1,9 +1,11 @@
 <?php
+
 namespace WHMCS\Module\Addon\Mailerlite\Database;
 
 use WHMCS\Database\Capsule;
 
-class Factories {
+class Factories
+{
 
     /**
      * Factory state - it could be active or inactive
@@ -17,9 +19,10 @@ class Factories {
      *
      * @var string
      */
-    protected $moduleName; 
+    protected $moduleName;
 
-    public function __construct($state = '') {
+    public function __construct($state = '')
+    {
         $this->state = $state;
         $this->moduleName = 'mailerlite';
     }
@@ -40,7 +43,7 @@ class Factories {
             
             case 'inactive':
                 $data = $this->makeInactiveSetting($params);
-                    break;
+                break;
 
             case '':
                 $data = $this->makeActiveSetting($params);
@@ -81,7 +84,7 @@ class Factories {
      * Create setting @_REQUEST array of data
      *
      * @param string $action controller action
-     * @param  array $params 
+     * @param  array $params
      * @return array
      */
     public function makeRequestData($action, $params = [])
@@ -174,7 +177,7 @@ class Factories {
     }
 
     /**
-     * Default set of whmcs controller data 
+     * Default set of whmcs controller data
      *
      * @return array
      */

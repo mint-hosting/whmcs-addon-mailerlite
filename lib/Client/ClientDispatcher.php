@@ -5,7 +5,8 @@ namespace WHMCS\Module\Addon\Mailerlite\Client;
 /**
  * Sample Client Area Dispatch Handler
  */
-class ClientDispatcher {
+class ClientDispatcher
+{
 
     /**
      * Dispatch request.

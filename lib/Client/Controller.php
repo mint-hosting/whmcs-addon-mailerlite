@@ -5,7 +5,8 @@ namespace WHMCS\Module\Addon\Mailerlite\Client;
 /**
  * Sample Client Area Controller
  */
-class Controller {
+class Controller
+{
 
     /**
      * Index action.

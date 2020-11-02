@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WHMCS\Module\Addon\Mailerlite\Helpers;
 
@@ -9,7 +9,7 @@ use WHMCS\Module\Addon\Mailerlite\Helpers\MailerliteHelperClass;
 use WHMCS\Module\Addon\Mailerlite\Exceptions\DbException;
 
 /**
- * Helper class 
+ * Helper class
  * All addiotional method used in module
  */
 class ModuleHelperClass
@@ -19,13 +19,13 @@ class ModuleHelperClass
      * Handling migration response during activation process
      *
      * @param array $response array of migration responses
-     * @return array 
+     * @return array
      */
     public function handleActivateMigrationsResponse($response)
     {
         $errors = array_values(
             array_filter(
-                $response, 
+                $response,
                 function ($el) {
                     return $el['status'] === 'error';
                 }
@@ -64,7 +64,7 @@ class ModuleHelperClass
     {
         $errors = array_values(
             array_filter(
-                $response, 
+                $response,
                 function ($el) {
                     return $el['status'] === 'error';
                 }
@@ -75,7 +75,6 @@ class ModuleHelperClass
         $status = (count($errors) > 0) ? 'error' : 'success';
     
         if (count($errors) > 0) {
-    
             $errorCount = count($errors);
             for ($i = 0; $i < $errorCount; $i++) {
                 $description .= $errors[$i]['description'];
@@ -229,14 +228,13 @@ class ModuleHelperClass
 
         if ($new) {
             $isEmailOptIn = $this->fetchMarketingEmailsOptInValue($params['userid']);
-            return ($isEmailOptIn) ? 
+            return ($isEmailOptIn) ?
                 (new MailerliteHelperClass($api))->addToTheGroup($setting[0]->list_id, $data) : false;
         }
 
-        return ($params['isOptedInToMarketingEmails']) ? 
+        return ($params['isOptedInToMarketingEmails']) ?
             (new MailerliteHelperClass($api))->addToTheGroup($setting[0]->list_id, $data) :
             (new MailerliteHelperClass($api))->removeFromTheGroup($setting[0]->list_id, $params['email']);
-
     }
 
     /**

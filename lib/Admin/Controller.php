@@ -11,7 +11,8 @@ use WHMCS\Module\Addon\Mailerlite\Exceptions\DbException;
 /**
  * Sample Admin Area Controller
  */
-class Controller {
+class Controller
+{
 
     /**
      * Index action.
@@ -29,7 +30,7 @@ class Controller {
         $activeSetting = (new ModuleHelperClass())->isActiveSetting();
 
         if ($activeSetting) {
-            header('Location: ' . $modulelink . '&action=synchronizedlist'); 
+            header('Location: ' . $modulelink . '&action=synchronizedlist');
             exit();
         }
 
@@ -47,11 +48,12 @@ class Controller {
      * @param array $vars Module configuration parameters
      * @return string html string
      */
-    public function validate($vars) {
+    public function validate($vars)
+    {
         $modulelink = $vars['modulelink'];
 
         if (!isset($_REQUEST['mailerlite-api-key'])) {
-            header('Location: ' . $modulelink); 
+            header('Location: ' . $modulelink);
             exit();
         }
 
@@ -91,15 +93,15 @@ class Controller {
         $helper = new ModuleHelperClass();
         $data = $helper->prepareSubscripitonData($_REQUEST);
 
-        if(count($data) === 0) {
-            header('Location: ' . $modulelink); 
+        if (count($data) === 0) {
+            header('Location: ' . $modulelink);
             exit();
         }
 
-        if(isset($_REQUEST['mailerlite-token'])) {
+        if (isset($_REQUEST['mailerlite-token'])) {
             // inserting data into DB, mailer settings table
             $helper->insertData($data);
-        } 
+        }
 
         // pull main page html content form template file
         $viewString = file_get_contents(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'synchronizedlistpage.tpl');
@@ -117,7 +119,7 @@ class Controller {
     {
         $modulelink = $vars['modulelink'];
         if (!isset($_REQUEST['list'])) {
-            header('Location: ' . $modulelink); 
+            header('Location: ' . $modulelink);
             exit();
         }
         
@@ -126,14 +128,13 @@ class Controller {
 
         try {
             $helper->disconnect($listId);
-            header('Location: ' . $modulelink); 
+            header('Location: ' . $modulelink);
             exit();
-
         } catch (DbException $e) {
             $data = $helper->prepareDataFromDb();
 
-            if(count($data) === 0) {
-                header('Location: ' . $modulelink); 
+            if (count($data) === 0) {
+                header('Location: ' . $modulelink);
                 exit();
             }
 
@@ -143,5 +144,4 @@ class Controller {
             return (new Views($viewString, ['modulelink' => $modulelink, 'selectedlist' => $data['name'], 'selectedlistid' => $data['id'], 'message' => $e->getMessage()], 'synchronizedlist', true))->render();
         }
     }
-
 }

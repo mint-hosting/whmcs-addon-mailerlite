@@ -5,7 +5,8 @@ namespace WHMCS\Module\Addon\Mailerlite\Admin;
 /**
  * Sample Admin Area Dispatch Handler
  */
-class AdminDispatcher {
+class AdminDispatcher
+{
 
     /**
      * Dispatch request.

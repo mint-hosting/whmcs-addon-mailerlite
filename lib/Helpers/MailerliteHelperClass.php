@@ -6,7 +6,8 @@ use WHMCS\Module\Addon\Mailerlite\Exceptions\MailerliteException;
 
 require dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-class MailerliteHelperClass {
+class MailerliteHelperClass
+{
 
     /**
      * MailerLite API Key
@@ -22,7 +23,8 @@ class MailerliteHelperClass {
      */
     protected $mailerlite;
 
-    public function __construct($apiKey) {
+    public function __construct($apiKey)
+    {
         $this->apiKey = $apiKey;
         $this->mailerlite = new \MailerLiteApi\MailerLite($this->apiKey);
     }
@@ -32,7 +34,8 @@ class MailerliteHelperClass {
      *
      * @return array
      */
-    public function fetchAllGroups() {
+    public function fetchAllGroups()
+    {
         $groupsApi = $this->mailerlite->groups();
         $groups = $groupsApi->get();
 
@@ -95,9 +98,8 @@ class MailerliteHelperClass {
             return $subscriber;
         }
 
-        $groupsApi = $this->mailerlite->groups(); 
+        $groupsApi = $this->mailerlite->groups();
 
         return $groupsApi->removeSubscriber($groupId, $subscriber->id);
     }
-
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace WHMCS\Module\Addon\Mailerlite\Database;
 
@@ -94,12 +94,12 @@ class Migrations
                 );
 
             return [
-                'status' => 'succes', 
+                'status' => 'succes',
                 'description' => 'MailerLite Settings table is created successfully'
             ];
         } catch (DbException $e) {
             return [
-                'status' => 'error', 
+                'status' => 'error',
                 'description' => 'MailerLite Settings table is not created: ' . $e->getMessage()
             ];
         }

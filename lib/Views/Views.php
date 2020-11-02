@@ -1,7 +1,9 @@
 <?php
+
 namespace WHMCS\Module\Addon\Mailerlite\Views;
 
-class Views {
+class Views
+{
 
     /**
      * Fetched content from the template
@@ -40,13 +42,13 @@ class Views {
     }
 
     /**
-     * Main 
+     * Main
      *
      * @return void
      */
     public function render()
     {
-        if($this->action != '') {
+        if ($this->action != '') {
             $action = $this->action;
             $this->$action();
 
@@ -70,7 +72,7 @@ class Views {
             $this->templateString = str_replace('{{' . $keys[$i] . '}}', $this->params[$keys[$i]], $this->templateString);
         }
 
-        $this->templateString = ($this->error) ? 
+        $this->templateString = ($this->error) ?
             str_replace('{{errormessage}}', $this->errorAlert($this->params['message']), $this->templateString) :
             str_replace('{{errormessage}}', '', $this->templateString);
     }
@@ -103,7 +105,6 @@ class Views {
                     $this->templateString = str_replace('{{' . $keys[$i] . '}}', $this->params[$keys[$i]], $this->templateString);
                     break;
             }
-            
         }
     }
 
@@ -112,7 +113,8 @@ class Views {
      *
      * @return void
      */
-    private function synchronizedlist() {
+    private function synchronizedlist()
+    {
         $keys = array_keys($this->params);
         $keyCount = count($keys);
 
@@ -120,7 +122,7 @@ class Views {
             $this->templateString = str_replace('{{' . $keys[$i] . '}}', $this->params[$keys[$i]], $this->templateString);
         }
 
-        $this->templateString = ($this->error) ? 
+        $this->templateString = ($this->error) ?
             str_replace('{{errormessage}}', $this->errorAlert($this->params['message']), $this->templateString) :
             str_replace('{{errormessage}}', '', $this->templateString);
     }
@@ -141,10 +143,10 @@ class Views {
     }
 
     /**
-     * Helper method which creates select html string with fetched mailerlite lists 
+     * Helper method which creates select html string with fetched mailerlite lists
      *
      * @param array $lists fetched lists
-     * @return string 
+     * @return string
      */
     private function prepareSelectHtml($lists)
     {
@@ -158,7 +160,6 @@ class Views {
             }
 
             $html .= '</select>';
-            
         } else {
             $message = "You don't have any Subscription lists. Please visit <a href='https://app.mailerlite.com/users/login/'>www.mailerlite.com</a> and create list.";
             $html = $this->errorAlert($message);
@@ -170,7 +171,7 @@ class Views {
     /**
      * Method used to prepare html string for proper button action
      *
-     * @param bool $subscriptionBtn 
+     * @param bool $subscriptionBtn
      * @return string html
      */
     private function prepareButton($subscriptionBtn)
