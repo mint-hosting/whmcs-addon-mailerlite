@@ -6,17 +6,9 @@
  * can provide both client and admin facing user interfaces, as well as
  * utilise hook functionality within WHMCS.
  *
- * This sample file demonstrates how an addon module for WHMCS should be
- * structured and exercises all supported functionality.
- *
  * Addon Modules are stored in the /modules/addons/ directory. The module
  * name you choose must be unique, and should be all lowercase, containing
  * only letters & numbers, always starting with a letter.
- *
- * Within the module itself, all functions must be prefixed with the module
- * filename, followed by an underscore, and then the function name. For this
- * example file, the filename is "addonmodule" and therefore all functions
- * begin "addonmodule_".
  *
  * For more information, please refer to the online documentation.
  *
@@ -64,7 +56,7 @@ function mailerlite_config()
         // Description displayed within the admin interface
         'description' => 'Automate mailing list management using the MailerLite digitial email marketing solution',
         // Module author name
-        'author' => 'Aleksandar Veljkovic',
+        'author' => 'Mint Hosting',
         // Default language
         'language' => 'english',
         // Version number

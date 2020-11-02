@@ -3,7 +3,6 @@
 namespace WHMCS\Module\Addon\Mailerlite\Database;
 
 use WHMCS\Database\Capsule;
-// use Illuminate\Database\Capsule\Manager as Capsule;
 use WHMCS\Module\Addon\Mailerlite\Exceptions\DbException;
 
 /**
