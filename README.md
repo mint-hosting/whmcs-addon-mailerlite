@@ -1,13 +1,25 @@
 # MailerLite WHMCS Addon Modules #
 
 ## Intoduction
-The MailewrLite integration leverages MailerLite's API to synchronize customer, order and abandoned cart data with your MailerLite account. 
+The MailerLite integration leverages MailerLite's API to synchronize customer, order and abandoned cart data with your MailerLite account. 
 This allows you to take full advantage of MailerLite's advanced e-commerce automations to setup manual and automated campaigns including:
 - Thank you's to new customers
 - Automated follow-up's on abandoned carts
 - To provide on-boarding/drip-feed campaigns to new customers
 - Attempt to win back lapsed customers who haven't bought anything recently
 - Reward your best customers based on order count or total spent
+
+## Installation
+1. On a server create a `mailerlite` directory inside `addons/modules`
+2. Clone the code:
+```
+cd addons/modules/mailerlite
+git clone https://github.com/mint-hosting/whmcs-addon-mailerlite.git .
+```
+3. Run `composer` inside `addons/modules/mailerlite` to install required libraries:
+```
+composer install
+``
 
 ## Initial Setup
 
