@@ -130,20 +130,10 @@ function mailerlite_output($vars)
     $version = $vars['version']; // eg. 1.0
     $_lang = $vars['_lang']; // an array of the currently loaded language variables
 
-    // Get module configuration parameters
-    $configTextField = $vars['Text Field Name'];
-    $configPasswordField = $vars['Password Field Name'];
-    $configCheckboxField = $vars['Checkbox Field Name'];
-    $configDropdownField = $vars['Dropdown Field Name'];
-    $configRadioField = $vars['Radio Field Name'];
-    $configTextareaField = $vars['Textarea Field Name'];
-
-    // Dispatch and handle request here. What follows is a demonstration of one
-    // possible way of handling this using a very basic dispatcher implementation.
-
     $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
     $dispatcher = new AdminDispatcher();
     $response = $dispatcher->dispatch($action, $vars);
+    
     echo $response;
 }
