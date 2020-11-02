@@ -19,7 +19,7 @@ git clone https://github.com/mint-hosting/whmcs-addon-mailerlite.git .
 3. Run `composer` inside `addons/modules/mailerlite` to install required libraries:
 ```
 composer install
-``
+```
 
 ## Initial Setup
 
