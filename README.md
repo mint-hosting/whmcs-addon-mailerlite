@@ -1,4 +1,4 @@
-# MailerLite WHMCS Addon Modules #
+# MailerLite WHMCS Addon Module #
 
 ## Intoduction
 The MailerLite integration leverages MailerLite's API to synchronize customer, order and abandoned cart data with your MailerLite account. 
